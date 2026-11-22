@@ -18,6 +18,7 @@ public class Movementhandeler : MonoBehaviour
     [SerializeField] private float BoostTime;
     [SerializeField] private float ChargeTime;
     [SerializeField] private BoxCollider PlayerCollider;
+    [SerializeField] private float HP;
     [Header("InputActionReference")]
     [SerializeField] InputActionReference move;
     [SerializeField] InputActionReference RollLeft;
@@ -32,9 +33,12 @@ public class Movementhandeler : MonoBehaviour
     [SerializeField] private GameObject BoostVis;
     [SerializeField] private Slider BrakeGauge;
     [SerializeField] private Slider SpecialTimer;
+    [SerializeField] private Slider HPGauge;
     [SerializeField] private SingleshotWeapon Sw;
     [SerializeField] private DoubleshotWeapon Dw;
     [SerializeField] private ChargeWeapon Cw;
+    [SerializeField] private GameObject DeathAnim;
+    [SerializeField] private GameObject PlayerShip;
 
     //Hidden From Inspector
     private bool rollright;
@@ -47,6 +51,7 @@ public class Movementhandeler : MonoBehaviour
     private float CurrentSpeed;
     private bool SpecialReady;
     private bool Threesixty;
+    private bool died;
     private Vector2 Movedirection;
 
     private void OnEnable()
@@ -101,6 +106,7 @@ public class Movementhandeler : MonoBehaviour
         CurrentSpeed = MoveSpeed;
         BrakeDepleted = true;
         SpecialReady = false;
+        HP = 100;
     }
     private void FixedUpdate()
     {
@@ -121,6 +127,13 @@ public class Movementhandeler : MonoBehaviour
                 SpecialTimer.value = 0;
             }
         }
+
+        HPGauge.value = HP;
+
+        if(HP<=0)
+        {
+            Death();
+        }
     }
 
     private void Movement()
@@ -133,6 +146,23 @@ public class Movementhandeler : MonoBehaviour
             transform.localPosition += new Vector3(Movedirection.x * 1.5f, Movedirection.y) * CurrentSpeed * Time.deltaTime;
             BoostGauge.value += 1f;
         }
+    }
+
+    public void Takedamage(float damage)
+    {
+        HP -= damage;
+    }
+
+    private void Death()
+    {
+        if(!died)
+        {
+            Instantiate(DeathAnim, this.gameObject.transform);
+            PlayerShip.SetActive(false);
+            CurrentSpeed = 0f;
+            GameManager.instance.GameOver();
+        }
+        died= true;
     }
 
     private void TiltHandeler()
@@ -174,11 +204,13 @@ public class Movementhandeler : MonoBehaviour
         {
             if(Sw.gameObject.activeSelf&&!Threesixty)
             {
+                Debug.Log("aaaa");
                 Sw.ShootFromPool();
             }
 
-            else if(Dw.gameObject.activeSelf&&!Threesixty)
+            if(Dw.gameObject.activeSelf&&!Threesixty)
             {
+                Debug.Log("bbbb");
                 Dw.ShootFromPool();
             }
 
@@ -191,7 +223,7 @@ public class Movementhandeler : MonoBehaviour
 
     private void ChargeAttack(InputAction.CallbackContext context)
     {
-        if(Cw.gameObject.activeSelf)
+        if(Cw.gameObject.activeSelf&&!Threesixty)
         {
 
             if (context.performed)

@@ -30,14 +30,19 @@ public class Projectile : MonoBehaviour
         if(other.gameObject.CompareTag("Enemy"))
         {
             other.TryGetComponent<EnemyController>(out EnemyController EM);
-
+            if(EM==null)
+            {
+                other.TryGetComponent<EnemyDoubleshot>(out EnemyDoubleshot ED);
+                ED.TakeDamage(Damage);
+            }
             EM.TakeDamage(Damage);
             gameObject.SetActive(false);
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
+        if(other.gameObject.CompareTag("Player"))
+        {
+            return;
+        }
         gameObject.SetActive(false);
     }
 }

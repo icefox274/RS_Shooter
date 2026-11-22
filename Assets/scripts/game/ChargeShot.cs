@@ -30,6 +30,7 @@ public class ChargeShot : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("Object"))
         {
+            Debug.Log("HHHH");
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
