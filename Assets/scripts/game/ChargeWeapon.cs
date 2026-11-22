@@ -11,6 +11,7 @@ public class ChargeWeapon : MonoBehaviour
     [SerializeField] Color Defaultcolor;
     [SerializeField] private float MaxCharge;
     [SerializeField] private float Reloadtime;
+    [SerializeField] private Image chargeVis;
 
     private float charge;
     private float timer;
@@ -20,7 +21,8 @@ public class ChargeWeapon : MonoBehaviour
 
     private void Update()
     {
-        if(startcharge)
+        chargeVis.fillAmount = charge*0.3f;
+        if (startcharge)
         {
             charge += Time.deltaTime;
             if (charge >= MaxCharge)
@@ -35,7 +37,7 @@ public class ChargeWeapon : MonoBehaviour
             timer-= Time.deltaTime;
             if(timer<=0)
             {
-                timer = 0;
+                timer = charge;
                 reloading = false;
             }
         }
@@ -61,6 +63,7 @@ public class ChargeWeapon : MonoBehaviour
         ready = false;
         Crosshair.color = Defaultcolor;
         charge = 0;
+        timer = charge;
     }
 
     public void StartCharge()

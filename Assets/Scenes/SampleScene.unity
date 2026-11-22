@@ -854,6 +854,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 656533312}
   m_CullTransparentMesh: 1
+--- !u!1 &695847046 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6179205917690801689, guid: 2f094d00991a37747b279e1806f186ad, type: 3}
+  m_PrefabInstance: {fileID: 1375435276}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &695847047 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6286206331277448790, guid: 2f094d00991a37747b279e1806f186ad, type: 3}
+  m_PrefabInstance: {fileID: 1375435276}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &695847048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695847046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf13d90f990f6bc41a5e424bded6bffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChargeWeapon
+  Crosshair: {fileID: 656533314}
+  ChargeShot: {fileID: 4254270433409255230, guid: c9843696fecf51445be6b48ff57769ad, type: 3}
+  ChargeShotTransform: {fileID: 1737983200}
+  Chargingcolor: {r: 0.4980392, g: 1, b: 0, a: 1}
+  Readycolor: {r: 0.8627452, g: 0.07843138, b: 0.2352941, a: 1}
+  Defaultcolor: {r: 1, g: 1, b: 1, a: 1}
+  MaxCharge: 3
+  Reloadtime: 2
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1201,7 +1231,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1273,8 +1303,8 @@ Transform:
   m_GameObject: {fileID: 1149442132}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 28.19}
-  m_LocalScale: {x: 2.28, y: 2.28, z: 2.28}
+  m_LocalPosition: {x: 0, y: 0, z: 163.7}
+  m_LocalScale: {x: 15.08, y: 15.08, z: 15.08}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -1339,16 +1369,14 @@ MonoBehaviour:
   Boost: {fileID: 303780734869389815, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   Brake: {fileID: 7982109463118629815, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   Attack: {fileID: 3641502271671434817, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-  Chargeattack: {fileID: 0}
+  Chargeattack: {fileID: 7633712269576375407, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   BoostGauge: {fileID: 1917159356}
   BoostVis: {fileID: 1316946615}
   BrakeGauge: {fileID: 327967589}
   SpecialTimer: {fileID: 1671774091}
-  MaxCharge: 0
-  minCharge: 0
   Sw: {fileID: 403634356}
   Dw: {fileID: 926038068}
-  Cw: {fileID: 0}
+  Cw: {fileID: 695847048}
 --- !u!65 &1354905160
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1387,6 +1415,7 @@ Transform:
   - {fileID: 1316946616}
   - {fileID: 403634357}
   - {fileID: 926038067}
+  - {fileID: 695847047}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1354905164
@@ -1446,6 +1475,66 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1001 &1375435276
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1354905163}
+    m_Modifications:
+    - target: {fileID: 6179205917690801689, guid: 2f094d00991a37747b279e1806f186ad, type: 3}
+      propertyPath: m_Name
+      value: ChargeShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6286206331277448790, guid: 2f094d00991a37747b279e1806f186ad, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6286206331277448790, guid: 2f094d00991a37747b279e1806f186ad, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6286206331277448790, guid: 2f094d00991a37747b279e1806f186ad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6286206331277448790, guid: 2f094d00991a37747b279e1806f186ad, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6286206331277448790, guid: 2f094d00991a37747b279e1806f186ad, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6286206331277448790, guid: 2f094d00991a37747b279e1806f186ad, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6286206331277448790, guid: 2f094d00991a37747b279e1806f186ad, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6286206331277448790, guid: 2f094d00991a37747b279e1806f186ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6286206331277448790, guid: 2f094d00991a37747b279e1806f186ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6286206331277448790, guid: 2f094d00991a37747b279e1806f186ad, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6179205917690801689, guid: 2f094d00991a37747b279e1806f186ad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 695847048}
+  m_SourcePrefab: {fileID: 100100000, guid: 2f094d00991a37747b279e1806f186ad, type: 3}
 --- !u!1 &1438042721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1907,6 +1996,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733779963}
   m_CullTransparentMesh: 1
+--- !u!4 &1737983200 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7131466663103408526, guid: 2f094d00991a37747b279e1806f186ad, type: 3}
+  m_PrefabInstance: {fileID: 1375435276}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1794558111
 GameObject:
   m_ObjectHideFlags: 0

@@ -309,6 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   ProjectileSpeed: 50
   Rigidbody: {fileID: -2105158654779203375}
+  Damage: 5
 --- !u!65 &7803347112873857826
 BoxCollider:
   m_ObjectHideFlags: 0

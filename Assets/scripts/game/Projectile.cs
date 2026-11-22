@@ -4,6 +4,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float ProjectileSpeed;
     [SerializeField] private Rigidbody Rigidbody;
+    [SerializeField] private float Damage;
     private Vector3 direction;
     private float timer;
 
@@ -26,14 +27,17 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.layer==16)
+        if(other.gameObject.CompareTag("Enemy"))
         {
+            other.TryGetComponent<EnemyController>(out EnemyController EM);
+
+            EM.TakeDamage(Damage);
             gameObject.SetActive(false);
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+        gameObject.SetActive(false);
     }
 }
