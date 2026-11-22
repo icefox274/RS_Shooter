@@ -6,7 +6,6 @@ public class ChargeShot : MonoBehaviour
     [SerializeField] private float ShotSpeed;
     [SerializeField] private GameObject ShotBlast;
     [SerializeField] private Rigidbody Rigidbody;
-    public System.Action destroyed;
     private Vector3 direction;
     private float timer;
 
@@ -27,17 +26,11 @@ public class ChargeShot : MonoBehaviour
         Rigidbody.linearVelocity = this.direction * ShotSpeed;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collision)
     {
-        if(destroyed!=null)
+        if(collision.gameObject.CompareTag("Object"))
         {
-            destroyed.Invoke();
-        }
-
-        if(other.gameObject.layer==10)
-        {
-            //todo 적시스템
-            Instantiate(ShotBlast, transform.position, transform.rotation);
+            Destroy(collision.gameObject);
             Destroy(gameObject);
         }
     }

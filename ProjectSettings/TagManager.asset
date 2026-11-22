@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Asteroid
+  - Enemy
+  - Object
   layers:
   - Default
   - TransparentFX
@@ -13,8 +15,8 @@ TagManager:
   - Water
   - UI
   - Projectile
-  - 
-  - 
+  - Obstacle
+  - Enemy
   - 
   - 
   - 

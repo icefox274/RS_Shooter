@@ -5,13 +5,12 @@ public class EnemyProjectile : MonoBehaviour
     [SerializeField] private float ProjectileSpeed;
     [SerializeField] private Rigidbody Rigidbody;
     [SerializeField] private float Damage;
-    private Vector3 direction;
     private float timer;
 
     private void Start()
     {
         this.gameObject.transform.SetParent(null);
-        Rigidbody.linearVelocity = this.direction * ProjectileSpeed;
+        Rigidbody.linearVelocity = Vector3.forward * -ProjectileSpeed;
     }
 
     private void Update()
