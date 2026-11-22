@@ -11,6 +11,7 @@ public class EnemyProjectile : MonoBehaviour
     private void Start()
     {
         this.gameObject.transform.SetParent(null);
+        Rigidbody.linearVelocity = this.direction * ProjectileSpeed;
     }
 
     private void Update()
@@ -22,12 +23,6 @@ public class EnemyProjectile : MonoBehaviour
             timer = 0;
             Destroy(gameObject);
         }
-    }
-
-    public void shoot(Vector3 dir)
-    {
-        this.direction = dir;
-        Rigidbody.linearVelocity = this.direction * ProjectileSpeed;
     }
 
     private void OnTriggerEnter(Collider other)
